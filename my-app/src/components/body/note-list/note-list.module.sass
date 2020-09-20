@@ -1,0 +1,42 @@
+.note
+    &_list
+        padding: 30px
+        background-color: white
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+        grid-gap: 40px
+    &_item
+        padding: 10px
+        min-height: 250px
+        box-shadow: 5px 5px 7px rgba(33,33,33,.35)
+        background-color: #aff8d8
+        transform: rotate(-2deg)
+        transition: transform .15s linear
+        cursor: pointer
+        &:hover, &:focus
+            z-index: 1
+            box-shadow: 5px 5px 7px rgba(33,33,33,.6)
+            transform: rotate(-2deg) scale(1.10)
+        &:nth-child(even)
+            background-color: #c4faf8
+            transform: rotate(1deg)
+            &:hover, &:focus
+                transform: rotate(1deg) scale(1.10)
+        &:nth-child(odd)
+            background-color: #ffc9de
+        &:nth-child(3n)
+            background-color: #ecd4ff
+            transform: rotate(-3deg)
+            &:hover, &:focus
+                transform: rotate(-3deg) scale(1.10)
+        &:nth-child(5n)
+            background-color: #ffffd1
+            transform: rotate(4deg)
+            &:hover, &:focus
+                transform: rotate(4deg) scale(1.10)
+        &__title
+            font-family: 'Indie Flower', cursive;
+            font-size: 20px
+        &__text
+            font-family: 'Reenie Beanie', cursive
+            font-size: 20px

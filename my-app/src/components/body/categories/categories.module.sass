@@ -1,0 +1,37 @@
+.categories
+    min-height: 85vh
+    display: flex
+    flex-direction: column
+    background-color: black
+    border-top: 1px solid white
+    &__item
+        position: relative
+        padding: 30px
+        color: white
+        text-decoration: none
+        font-family: 'Roboto', sans-serif
+        font-size: 24px
+        font-weight: 500px
+    &__item.active
+        color: black
+        background-color: white
+.create_categories
+    position: relative
+    padding: 30px
+    button,
+    input,
+        background-color: transparent
+        border: none
+        outline: none
+        color: white
+        font-family: 'Roboto', sans-serif
+    button
+        position: absolute
+        padding: 20px
+        top: 15px
+        right: 10px
+        cursor: pointer
+    input
+        width: 100%
+        border-bottom: 1px solid white
+
