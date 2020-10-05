@@ -1,42 +1,45 @@
 .note
     &_list
-        padding: 30px
+        padding: 30px 40px
         background-color: white
         display: grid
         grid-template-columns: repeat(3, 1fr)
         grid-gap: 40px
-    &_item
-        padding: 10px
-        min-height: 250px
-        box-shadow: 5px 5px 7px rgba(33,33,33,.35)
-        background-color: #aff8d8
-        transform: rotate(-2deg)
-        transition: transform .15s linear
-        cursor: pointer
-        &:hover, &:focus
-            z-index: 1
-            box-shadow: 5px 5px 7px rgba(33,33,33,.6)
-            transform: rotate(-2deg) scale(1.10)
-        &:nth-child(even)
-            background-color: #c4faf8
-            transform: rotate(1deg)
-            &:hover, &:focus
-                transform: rotate(1deg) scale(1.10)
-        &:nth-child(odd)
-            background-color: #ffc9de
-        &:nth-child(3n)
-            background-color: #ecd4ff
-            transform: rotate(-3deg)
-            &:hover, &:focus
-                transform: rotate(-3deg) scale(1.10)
-        &:nth-child(5n)
-            background-color: #ffffd1
-            transform: rotate(4deg)
-            &:hover, &:focus
-                transform: rotate(4deg) scale(1.10)
-        &__title
-            font-family: 'Indie Flower', cursive;
-            font-size: 20px
-        &__text
-            font-family: 'Reenie Beanie', cursive
-            font-size: 20px
+        @media (max-width: 1050px)
+            grid-template-columns: repeat(2, 1fr)
+        @media (max-width: 650px)
+            padding: 20px
+            grid-template-columns: 1fr
+        &__create_btn
+            position: fixed
+            bottom: 50px
+            right: 50px
+            height: 60px
+            width: 60px
+            border-radius: 50%
+            background-color: black
+            cursor: pointer
+            &::before,
+            &::after
+                content: ''
+                position: absolute
+                top: 50%
+                left: 50%
+                height: 40px
+                width: 3px
+                transform: translate(-50%, -50%)
+                background-color: white
+            &::after
+                transform: translate(-50%, -50%) rotate(90deg)
+        &__delete_btn
+            z-index: 5
+            position: fixed
+            bottom: 130px
+            right: 45px
+            background-color: transparent
+            outline: none
+            border: none
+            cursor: pointer
+            svg
+                height: 60px
+                width: 60px

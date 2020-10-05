@@ -10,7 +10,7 @@ function App(props) {
     <BrowserRouter>
     <div className="app">
       <Header />
-      <Body categoriesData={props.state.categoriesData} addCategory={props.addCategory} />
+      <Body />
     </div>
     </BrowserRouter>
   );
