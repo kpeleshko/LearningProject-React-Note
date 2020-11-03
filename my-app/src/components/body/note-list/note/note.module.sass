@@ -5,8 +5,6 @@
         min-height: 250px
         max-height: 300px
         box-shadow: 5px 5px 7px rgba(33,33,33,.35)
-        background-color: #aff8d8
-        transform: rotate(-2deg)
         transition: transform .15s linear
         &_create
             display: none
@@ -15,43 +13,32 @@
         &:hover, &:focus
             z-index: 1
             box-shadow: 5px 5px 7px rgba(33,33,33,.6)
-            transform: rotate(-2deg) scale(1.10)
-            .note_item__title,
-            .note_item__text
-                background-color: rgba(white, .3)
-                border-bottom: 1px solid white
-                box-shadow: 2px 2px 5px rgba(black,.1)
-        &:nth-child(even)
-            background-color: #c4faf8
-            transform: rotate(1deg)
-            &:hover, &:focus
-                transform: rotate(1deg) scale(1.10)
-        &:nth-child(odd)
-            background-color: #ffc9de
-        &:nth-child(3n)
-            background-color: #ecd4ff
-            transform: rotate(-3deg)
-            &:hover, &:focus
-                transform: rotate(-3deg) scale(1.10)
-        &:nth-child(5n)
-            background-color: #ffffd1
-            transform: rotate(4deg)
-            &:hover, &:focus
-                transform: rotate(4deg) scale(1.10)
         &__title,
         &__text
-            background-color: transparent
+            display: inline-block
+            cursor: pointer
+        &__title_input,
+        &__text_input
+            background-color: rgba(white, .3)
             border: none
             outline: none
-            font-size: 20px
-        &__title
-            width: 90%
-            font-family: 'Indie Flower', cursive
-        &__text
-            margin-top: 10px
+            border-bottom: 1px solid white
+            box-shadow: 2px 2px 5px rgba(black,.1)
+        &__title,
+        &__title_input
+            margin-bottom: 20px
+            height: 33%
+            width: 85%
+            font-family: 'Manrope', sans-serif
+            font-weight: 400
+            font-size: 24px
+        &__text,
+        &__text_input
             width: 100%
-            min-height: 170px
-            font-family: 'Reenie Beanie', cursive
+            min-height: 70px
+            font-family: 'Manrope', sans-serif
+            font-weight: 300
+            font-size: 16px
         &__checkbox
             display: block
             position: absolute
@@ -87,3 +74,27 @@
 	            filter: brightness(110%)
             span:active:before
 	            filter: brightness(80%)
+
+.theme
+    position: absolute
+    bottom: 10px
+    left: 10px
+    span
+        margin-right: 10px
+        display: inline-block
+        height: 20px
+        width: 20px
+        border-radius: 50%
+        border: 1px solid white
+        box-shadow: 1px 1px 5px rgba(black, .5)
+        cursor: pointer
+    &__grey
+        background-color: #dcdcdc
+    &__pink
+        background-color: #ffc9de
+    &__blue
+        background-color: #c4faf8
+    &__green
+        background-color: #aff8d8
+    &__yellow
+        background-color: #ffffd1

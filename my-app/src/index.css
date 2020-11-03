@@ -1,0 +1,24 @@
+.theme__grey {
+    background-color: #dcdcdc;
+    transform: rotate(.7deg);
+}
+    
+.theme__pink {
+    background-color: #ffc9de;
+    transform: rotate(-.5deg);
+}
+    
+.theme__blue {
+    background-color: #c4faf8;
+    transform: rotate(-.2deg);
+}
+    
+.theme__green {
+    background-color: #aff8d8;
+    transform: rotate(.4deg)
+}
+    
+.theme__yellow {
+    background-color: #ffffd1;
+    transform: rotate(.2deg);
+}

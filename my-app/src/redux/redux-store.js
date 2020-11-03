@@ -1,7 +1,11 @@
 import {combineReducers, createStore} from 'redux';
 import notesReduser from './notes-reduser';
+import { reducer as formReducer } from 'redux-form';
 
-let reducers = combineReducers({notes: notesReduser});
+let reducers = combineReducers({
+    notes: notesReduser, 
+    form: formReducer
+});
 
 
 let store = createStore(

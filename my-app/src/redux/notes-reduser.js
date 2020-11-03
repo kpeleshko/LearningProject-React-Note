@@ -37,7 +37,6 @@ const notesReduser = (state = initialState, action) => {
         case chooseNote:
             let copyNote = state.note.map(item => {
                 let copyItem = item;
-
                 if(item.id === action.itemId) {
                     copyItem.isChoosen = action.isChoosen
                 }
@@ -55,7 +54,7 @@ const notesReduser = (state = initialState, action) => {
                 ...state,
                 newNoteTitle: '',
                 newNoteBody: '',
-                note: [...state.note, {id: ++state.note.length, isChoosen: false, title: title, note: body}],
+                note: [...state.note, {id: ++state.note.length, isChoosen: false, title: title, note: body }],
             };
         case deleteNote:
             let copy = state.note.filter(item => !item.isChoosen).map((item, id) => {
@@ -64,11 +63,9 @@ const notesReduser = (state = initialState, action) => {
                     id: ++id
                 }
             })
-
             return {
                 ...state,
                 note: copy,
-
             }
         default:
             return state

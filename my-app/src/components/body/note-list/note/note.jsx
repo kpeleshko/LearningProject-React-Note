@@ -1,37 +1,74 @@
 import React, {useState} from 'react';
 import s from './note.module.sass';
+import { useEffect } from 'react';
 
-function NoteItem(props) {
-  const [id, setId] = useState(props.id);
+const NoteItem = (props) => {
+  let [id, setId] = useState(props.id);
+  let [body, setBody] = useState(props.body);
+  let [title, setTitle] = useState(props.title);
+  let [editModeBody, setEditModeBody] = useState(false);
+  let [editModeTitle, setEditModeTitle] = useState(false);
+  let [colorTheme, setcolorTheme] = useState('theme__grey');
 
-  let onChooseNoteClick = () => {
-    props.onChooseNoteClick(!props.isChoosen, id);
+  useEffect(() => {
+    const currentColorTheme = localStorage.getItem('theme__color')
+    if (currentColorTheme) {setcolorTheme(currentColorTheme)}
+  }, []);
+
+  const changeTheme = (theme) => {
+    setcolorTheme(theme);
+    localStorage.setItem('theme__color', theme)
   }
 
-  let onNoteTitleChange = (e) => {
-    let title = e.target.value;
+  const activateEditModeText = () => { setEditModeBody(true) }
+  const activateEditModeTitle = () => { setEditModeTitle(true) }
+
+  const deactivateEditModeText = () => {
+    setEditModeBody(false);
+    props.updateNewNoteBodyCreator(body, id);
+  }
+  const deactivateEditModeTitle = () => {
+    setEditModeTitle(false);
     props.updateNewNoteTitleCreator(title, id);
   }
 
-  let onNoteBodyChange = (e) => {
-    let body = e.target.value;
-    props.updateNewNoteBodyCreator(body, id);
+  const onNoteBodyChange = (e) => { setBody(e.currentTarget.value) }
+  const onNoteTitleChange = (e) => { setTitle(e.currentTarget.value) }
+
+  const onChooseNoteClick = () => {
+    props.onChooseNoteClick(!props.isChoosen, id);
   }
 
-
   return (
-    <div className={ s.note_item } data-key={id}>
+    <form className={ `${s.note_item} ${colorTheme}` }>
+        <div>
+          {!editModeTitle
+            ? <span onDoubleClick={activateEditModeTitle} className={ s.note_item__title }>{props.title || 'Title :)'}</span>
+            : <input onBlur={deactivateEditModeTitle} onChange={onNoteTitleChange} value={title} autoFocus={true} className={ s.note_item__title_input }/>
+          }
+        </div>
 
-      <textarea type="text" value={props.title} onChange={onNoteTitleChange} className={ s.note_item__title }>{props.title}</textarea>
-      <textarea value={props.body} onChange={onNoteBodyChange} className={ s.note_item__text }>{props.body}</textarea>
-      <label className={ s.note_item__checkbox }>
-        <input type='checkbox' checked={props.isChoosen} onChange={onChooseNoteClick} />
-        <span></span>
-      </label>
-    </div>
-    
+        <div>
+          {!editModeBody
+            ? <span onDoubleClick={activateEditModeText} className={ s.note_item__text }>{props.body || 'Enter a note text...'}</span>
+            : <input onBlur={deactivateEditModeText} onChange={onNoteBodyChange} value={body} autoFocus={true} className={ s.note_item__text_input }/>
+          }
+        </div>
+
+        <div className={ `${ s.theme }` }>
+          <span className={ s.theme__grey } onClick={() => changeTheme('theme__grey')}></span>
+          <span className={ s.theme__pink } onClick={() => changeTheme('theme__pink')}></span>
+          <span className={ s.theme__blue } onClick={() => changeTheme('theme__blue')}></span>
+          <span className={ s.theme__green } onClick={() => changeTheme('theme__green')}></span>
+          <span className={ s.theme__yellow } onClick={() => changeTheme('theme__yellow')}></span>
+        </div>
+
+        <label className={ s.note_item__checkbox }>
+          <input type='checkbox' checked={props.isChoosen} onChange={onChooseNoteClick} />
+          <span></span>
+       </label>
+    </form>
   );
 }
 
 export default NoteItem;
-
