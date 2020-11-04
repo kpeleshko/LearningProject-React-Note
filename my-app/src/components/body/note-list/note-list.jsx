@@ -18,6 +18,7 @@ const NoteList = (props) => {
         isChoosen={note.isChoosen}
         title={note.title}
         body={note.note}
+        colorTheme={note.colorTheme}
         onChooseNoteClick={props.onChooseNoteClick}
         updateNewNoteTitleCreator={props.updateNewNoteTitleCreator}
         updateNewNoteBodyCreator={props.updateNewNoteBodyCreator}

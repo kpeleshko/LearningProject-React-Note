@@ -5,11 +5,7 @@ const chooseNote = 'CHOOSE-NOTE';
 const sendNewNote = 'SEND-NEW-NOTE';
 const deleteNote = 'DELETE-NOTE';
 
-let initialState = {
-    note: [
-        
-    ]
-}
+let initialState = { note: [] }
 
 const notesReduser = (state = initialState, action) => {
     switch(action.type) {
@@ -35,6 +31,17 @@ const notesReduser = (state = initialState, action) => {
                 note: copyNotesBody,
                 newNoteBody: action.newText
             }
+        case updateNewNoteColor:
+            let copyNotes = state.note.map(item => {
+                let copyItem = item;
+                item.id === action.itemId ? copyItem.colorTheme = action.newcolorTheme : copyItem.colorTheme = copyItem.colorTheme
+                return copyItem;
+            });
+            return {
+                ...state,
+                note: copyNotes,
+                newcolorTheme: action.colorTheme
+            }
         case chooseNote:
             let copyNote = state.note.map(item => {
                 let copyItem = item;
@@ -51,11 +58,13 @@ const notesReduser = (state = initialState, action) => {
         case sendNewNote:
             let title = '';
             let body = '';
+            let colorTheme = 'theme__grey';
             return {
                 ...state,
                 newNoteTitle: '',
                 newNoteBody: '',
-                note: [...state.note, {id: ++state.note.length, isChoosen: false, title: title, note: body }],
+                newcolorTheme: '',
+                note: [...state.note, {id: ++state.note.length, isChoosen: false, title: title, note: body, colorTheme: colorTheme }],
             };
         case deleteNote:
             let copy = state.note.filter(item => !item.isChoosen).map((item, id) => {

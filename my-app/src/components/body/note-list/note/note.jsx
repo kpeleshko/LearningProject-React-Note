@@ -1,19 +1,19 @@
 import React, {useState} from 'react';
 import s from './note.module.sass';
-import { useEffect } from 'react';
 
 const NoteItem = (props) => {
   let [id, setId] = useState(props.id);
   let [body, setBody] = useState(props.body);
   let [title, setTitle] = useState(props.title);
+  let [colorTheme, setcolorTheme] = useState(props.colorTheme);
   let [editModeBody, setEditModeBody] = useState(false);
   let [editModeTitle, setEditModeTitle] = useState(false);
-  let [colorTheme, setcolorTheme] = useState('theme__grey');
 
 
   const changeTheme = (colorTheme) => {
     setcolorTheme(colorTheme);
     props.updateNewNoteColorCreator(colorTheme, id);
+    alert(colorTheme);
   }
 
   const activateEditModeText = () => { setEditModeBody(true) }
@@ -36,7 +36,7 @@ const NoteItem = (props) => {
   }
 
   return (
-    <form className={ `${s.note_item} ${colorTheme}` }>
+    <form className={ `${s.note_item} ${colorTheme}`} draggable={true}>
         <div>
           {!editModeTitle
             ? <span onDoubleClick={activateEditModeTitle} className={ s.note_item__title }>{props.title || 'Title :)'}</span>
