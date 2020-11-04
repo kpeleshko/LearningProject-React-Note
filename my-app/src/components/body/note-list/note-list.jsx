@@ -21,7 +21,7 @@ const NoteList = (props) => {
         onChooseNoteClick={props.onChooseNoteClick}
         updateNewNoteTitleCreator={props.updateNewNoteTitleCreator}
         updateNewNoteBodyCreator={props.updateNewNoteBodyCreator}
-        updateNewNoteColorThemeCreator={props.updateNewNoteColorThemeCreator} />)
+        updateNewNoteColorCreator={props.updateNewNoteColorCreator}/>)
   );
 
   return (

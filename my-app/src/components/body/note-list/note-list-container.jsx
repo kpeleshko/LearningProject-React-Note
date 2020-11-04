@@ -1,4 +1,4 @@
-import {onSendNoteClick, onDeleteNoteClick, onChooseNoteClick, updateNewNoteBodyCreator, updateNewNoteTitleCreator} from '../../../redux/notes-reduser';
+import {onSendNoteClick, onDeleteNoteClick, onChooseNoteClick, updateNewNoteBodyCreator, updateNewNoteTitleCreator, updateNewNoteColorCreator} from '../../../redux/notes-reduser';
 import NoteList from './note-list';
 import { connect } from 'react-redux';
 
@@ -11,6 +11,6 @@ let mapStateToProps = (state) => {
   }
 }
 
-const NoteListContainer = connect(mapStateToProps, {onSendNoteClick, onDeleteNoteClick, onChooseNoteClick, updateNewNoteTitleCreator, updateNewNoteBodyCreator})(NoteList);
+const NoteListContainer = connect(mapStateToProps, {onSendNoteClick, onDeleteNoteClick, onChooseNoteClick, updateNewNoteTitleCreator, updateNewNoteBodyCreator, updateNewNoteColorCreator})(NoteList);
 
 export default NoteListContainer;

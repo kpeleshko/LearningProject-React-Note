@@ -10,14 +10,10 @@ const NoteItem = (props) => {
   let [editModeTitle, setEditModeTitle] = useState(false);
   let [colorTheme, setcolorTheme] = useState('theme__grey');
 
-  useEffect(() => {
-    const currentColorTheme = localStorage.getItem('theme__color')
-    if (currentColorTheme) {setcolorTheme(currentColorTheme)}
-  }, []);
 
-  const changeTheme = (theme) => {
-    setcolorTheme(theme);
-    localStorage.setItem('theme__color', theme)
+  const changeTheme = (colorTheme) => {
+    setcolorTheme(colorTheme);
+    props.updateNewNoteColorCreator(colorTheme, id);
   }
 
   const activateEditModeText = () => { setEditModeBody(true) }

@@ -1,5 +1,6 @@
 const updateNewNoteTitle = 'UPDATE-NEW-NOTE-TITLE';
 const updateNewNoteBody = 'UPDATE-NEW-NOTE-BODY';
+const updateNewNoteColor = 'UPDATE-NEW-NOTE-COLOR';
 const chooseNote = 'CHOOSE-NOTE';
 const sendNewNote = 'SEND-NEW-NOTE';
 const deleteNote = 'DELETE-NOTE';
@@ -78,5 +79,6 @@ export const onSendNoteClick = () => ({type: sendNewNote})
 export const onChooseNoteClick = (isChoosen, itemId) => ({type: chooseNote, isChoosen: isChoosen, itemId: itemId})
 export const updateNewNoteBodyCreator = (body, itemId) => ({type: updateNewNoteBody, newText: body, itemId: itemId })
 export const updateNewNoteTitleCreator = (title, itemId) => ({type: updateNewNoteTitle, newText: title, itemId: itemId })
+export const updateNewNoteColorCreator = (colorTheme, itemId) => ({type: updateNewNoteColor, newcolorTheme: colorTheme, itemId: itemId })
 
 export default notesReduser
